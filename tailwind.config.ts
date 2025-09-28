@@ -47,6 +47,26 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Dashboard status colors
+        status: {
+          critical: "hsl(var(--status-critical))",
+          high: "hsl(var(--status-high))",
+          warning: "hsl(var(--status-warning))",
+          medium: "hsl(var(--status-medium))",
+          safe: "hsl(var(--status-safe))",
+          success: "hsl(var(--status-success))",
+        },
+        dashboard: {
+          accent: "hsl(var(--dashboard-accent))",
+          success: "hsl(var(--dashboard-success))",
+          warning: "hsl(var(--dashboard-warning))",
+          danger: "hsl(var(--dashboard-danger))",
+        },
+        heatmap: {
+          low: "hsl(var(--heatmap-low))",
+          medium: "hsl(var(--heatmap-medium))",
+          high: "hsl(var(--heatmap-high))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
