@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import {
   Users,
   AlertTriangle,
@@ -48,6 +49,7 @@ const QuickActionButton = ({ title, icon: Icon, variant, onClick }: any) => (
 );
 
 export default function Dashboard() {
+  const { toast } = useToast();
   return (
     <div className="p-6 space-y-6">
       {/* Page Header */}
@@ -151,21 +153,41 @@ export default function Dashboard() {
               title="Emergency Broadcast"
               icon={Radio}
               variant="destructive"
+              onClick={() => toast({
+                title: "Emergency Broadcast System",
+                description: "Mass emergency alert functionality will be implemented in the next version. This will enable instant communication to all tourists in selected areas.",
+                duration: 4000,
+              })}
             />
             <QuickActionButton
               title="Send Area Alert"
               icon={MessageSquare}
               variant="default"
+              onClick={() => toast({
+                title: "Area Alert System",
+                description: "Targeted area-specific alert functionality will be added. This will allow sending warnings to tourists in specific zones or locations.",
+                duration: 4000,
+              })}
             />
             <QuickActionButton
               title="Generate e-FIR"
               icon={Shield}
               variant="secondary"
+              onClick={() => toast({
+                title: "e-FIR Generation",
+                description: "Automated electronic FIR generation system will be integrated. This will streamline incident reporting and legal documentation.",
+                duration: 4000,
+              })}
             />
             <QuickActionButton
               title="Dispatch Emergency"
               icon={Phone}
               variant="outline"
+              onClick={() => toast({
+                title: "Emergency Dispatch",
+                description: "Emergency response dispatch system will be implemented. This will coordinate with local emergency services for rapid response.",
+                duration: 4000,
+              })}
             />
           </div>
 

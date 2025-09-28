@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useToast } from "@/hooks/use-toast";
 import {
   Users,
   Search,
@@ -15,7 +16,8 @@ import {
   Shield,
 } from "lucide-react";
 
-const TouristRow = ({ tourist }: any) => (
+const TouristRow = ({ tourist }: any) => {
+  const { toast } = useToast();
   <tr className="border-b border-border hover:bg-muted/50">
     <td className="p-4">
       <div className="flex items-center space-x-3">
@@ -67,13 +69,25 @@ const TouristRow = ({ tourist }: any) => (
     </td>
     <td className="p-4">
       <div className="flex space-x-1">
-        <Button size="sm" variant="ghost">
+        <Button size="sm" variant="ghost" onClick={() => toast({
+          title: "Tourist Profile View",
+          description: "Detailed tourist profile interface will be implemented. This will show complete travel history, preferences, and real-time location data.",
+          duration: 4000,
+        })}>
           <Eye className="h-4 w-4" />
         </Button>
-        <Button size="sm" variant="ghost">
+        <Button size="sm" variant="ghost" onClick={() => toast({
+          title: "Tourist Messaging",
+          description: "Direct messaging system will be added. This will enable secure communication between authorities and tourists.",
+          duration: 4000,
+        })}>
           <MessageSquare className="h-4 w-4" />
         </Button>
-        <Button size="sm" variant="ghost">
+        <Button size="sm" variant="ghost" onClick={() => toast({
+          title: "Live Location Tracking",
+          description: "Real-time location tracking interface will be implemented. This will show tourist's current location and movement history on an interactive map.",
+          duration: 4000,
+        })}>
           <MapPin className="h-4 w-4" />
         </Button>
       </div>
@@ -82,6 +96,7 @@ const TouristRow = ({ tourist }: any) => (
 );
 
 export default function TouristManagement() {
+  const { toast } = useToast();
   const tourists = [
     {
       id: "TS",
@@ -205,7 +220,11 @@ export default function TouristManagement() {
               <option>Caution</option>
               <option>Inactive</option>
             </select>
-            <Button>
+            <Button onClick={() => toast({
+              title: "Data Export Feature",
+              description: "Tourist data export functionality will be implemented. This will allow exporting filtered data in various formats (CSV, PDF, Excel) with privacy compliance.",
+              duration: 4000,
+            })}>
               <Download className="h-4 w-4 mr-2" />
               Export
             </Button>

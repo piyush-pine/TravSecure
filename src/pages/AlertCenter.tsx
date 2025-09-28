@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 import {
   AlertTriangle,
   Search,
@@ -14,7 +15,8 @@ import {
   Eye,
 } from "lucide-react";
 
-const AlertCard = ({ alert }: any) => (
+const AlertCard = ({ alert }: any) => {
+  const { toast } = useToast();
   <Card className="p-4">
     <div className="flex items-start justify-between">
       <div className="flex items-start space-x-3">
@@ -60,30 +62,54 @@ const AlertCard = ({ alert }: any) => (
       <div className="flex space-x-2">
         {alert.priority === 'Critical' && (
           <>
-            <Button size="sm" variant="destructive">
+            <Button size="sm" variant="destructive" onClick={() => toast({
+              title: "Emergency Dispatch",
+              description: "Emergency response dispatch functionality will be implemented. This will automatically notify and dispatch emergency services to the tourist's location.",
+              duration: 4000,
+            })}>
               Dispatch Emergency
             </Button>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" onClick={() => toast({
+              title: "Tourist Communication",
+              description: "Direct tourist communication system will be added. This will enable instant voice/video calls and emergency messaging.",
+              duration: 4000,
+            })}>
               Contact Tourist
             </Button>
           </>
         )}
         {alert.priority === 'High' && (
           <>
-            <Button size="sm" variant="default">
+            <Button size="sm" variant="default" onClick={() => toast({
+              title: "Warning Alert System",
+              description: "Automated warning alert system will be implemented. This will send targeted safety warnings to affected tourists.",
+              duration: 4000,
+            })}>
               Send Warning
             </Button>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" onClick={() => toast({
+              title: "Detailed Alert View",
+              description: "Comprehensive alert details view will be added. This will show complete incident information, photos, and real-time updates.",
+              duration: 4000,
+            })}>
               View Details
             </Button>
           </>
         )}
         {alert.priority === 'Medium' && (
           <>
-            <Button size="sm" variant="secondary">
+            <Button size="sm" variant="secondary" onClick={() => toast({
+              title: "Investigation Module",
+              description: "Alert investigation tools will be implemented. This will provide investigation workflows and evidence collection features.",
+              duration: 4000,
+            })}>
               Investigate
             </Button>
-            <Button size="sm" variant="outline">
+            <Button size="sm" variant="outline" onClick={() => toast({
+              title: "Alert Management",
+              description: "Alert dismissal and resolution tracking will be added. This will maintain alert history and resolution status.",
+              duration: 4000,
+            })}>
               Dismiss
             </Button>
           </>
@@ -94,6 +120,7 @@ const AlertCard = ({ alert }: any) => (
 );
 
 export default function AlertCenter() {
+  const { toast } = useToast();
   const alerts = [
     {
       id: 1,
@@ -133,11 +160,19 @@ export default function AlertCenter() {
           <p className="text-muted-foreground">Real-time alerts and incident notifications</p>
         </div>
         <div className="flex space-x-2">
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => toast({
+            title: "Alert Filter System",
+            description: "Advanced alert filtering functionality will be implemented. This will allow filtering by priority, type, location, and time range.",
+            duration: 4000,
+          })}>
             <Filter className="h-4 w-4 mr-2" />
             Filter
           </Button>
-          <Button>
+          <Button onClick={() => toast({
+            title: "Manual Alert Creation",
+            description: "Manual alert creation interface will be added. This will allow authorities to create custom alerts and notifications.",
+            duration: 4000,
+          })}>
             <Plus className="h-4 w-4 mr-2" />
             Create Alert
           </Button>

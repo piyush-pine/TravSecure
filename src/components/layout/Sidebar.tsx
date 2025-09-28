@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 import {
   LayoutDashboard,
   AlertTriangle,
@@ -56,6 +57,7 @@ const navigationItems = [
 export const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
+  const { toast } = useToast();
 
   return (
     <div
@@ -148,19 +150,47 @@ export const Sidebar = () => {
         {!isCollapsed ? (
           <div className="space-y-2">
             <h3 className="text-sm font-semibold text-sidebar-foreground mb-2">Emergency Actions</h3>
-            <button className="w-full bg-status-critical hover:bg-status-critical/90 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            <button 
+              className="w-full bg-status-critical hover:bg-status-critical/90 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              onClick={() => toast({
+                title: "Emergency Broadcast System",
+                description: "Mass emergency broadcast functionality will be implemented. This will enable instant communication to all tourists in the system during critical situations.",
+                duration: 4000,
+              })}
+            >
               Emergency Broadcast
             </button>
-            <button className="w-full bg-status-warning hover:bg-status-warning/90 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            <button 
+              className="w-full bg-status-warning hover:bg-status-warning/90 text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              onClick={() => toast({
+                title: "Mass Alert System",
+                description: "Automated mass alert system will be implemented. This will send targeted alerts to large groups of tourists based on location and risk factors.",
+                duration: 4000,
+              })}
+            >
               Mass Alert System
             </button>
           </div>
         ) : (
           <div className="flex flex-col space-y-2">
-            <button className="p-2 bg-status-critical hover:bg-status-critical/90 text-white rounded-md">
+            <button 
+              className="p-2 bg-status-critical hover:bg-status-critical/90 text-white rounded-md"
+              onClick={() => toast({
+                title: "Emergency Broadcast",
+                description: "Emergency broadcast functionality will be added in the next version.",
+                duration: 3000,
+              })}
+            >
               <Radio className="h-4 w-4" />
             </button>
-            <button className="p-2 bg-status-warning hover:bg-status-warning/90 text-white rounded-md">
+            <button 
+              className="p-2 bg-status-warning hover:bg-status-warning/90 text-white rounded-md"
+              onClick={() => toast({
+                title: "Mass Alert System",
+                description: "Mass alert functionality will be added in the next version.",
+                duration: 3000,
+              })}
+            >
               <AlertTriangle className="h-4 w-4" />
             </button>
           </div>

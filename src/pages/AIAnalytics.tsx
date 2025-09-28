@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/hooks/use-toast";
 import {
   Brain,
   TrendingUp,
@@ -15,7 +16,8 @@ import {
   Phone,
 } from "lucide-react";
 
-const AnomalyLogItem = ({ anomaly }: any) => (
+const AnomalyLogItem = ({ anomaly }: any) => {
+  const { toast } = useToast();
   <Card className="p-4">
     <div className="flex items-start justify-between">
       <div className="flex items-start space-x-3">
@@ -51,21 +53,37 @@ const AnomalyLogItem = ({ anomaly }: any) => (
       </div>
       <div className="flex space-x-2">
         {anomaly.severity === 'Critical' && (
-          <Button size="sm" variant="destructive">
+          <Button size="sm" variant="destructive" onClick={() => toast({
+            title: "AI Investigation Tools",
+            description: "Advanced AI investigation interface will be implemented. This will provide detailed analysis, evidence collection, and automated response recommendations.",
+            duration: 4000,
+          })}>
             Investigate
           </Button>
         )}
         {anomaly.severity === 'High' && (
-          <Button size="sm" variant="default">
+          <Button size="sm" variant="default" onClick={() => toast({
+            title: "AI Monitoring Dashboard",
+            description: "Enhanced AI monitoring tools will be added. This will provide continuous tracking and predictive analysis for potential incidents.",
+            duration: 4000,
+          })}>
             Monitor
           </Button>
         )}
         {anomaly.severity === 'Medium' && (
-          <Button size="sm" variant="secondary">
+          <Button size="sm" variant="secondary" onClick={() => toast({
+            title: "Smart Tourist Communication",
+            description: "AI-assisted communication system will be implemented. This will provide context-aware messaging and automated safety recommendations.",
+            duration: 4000,
+          })}>
             Contact Tourist
           </Button>
         )}
-        <Button size="sm" variant="outline">
+        <Button size="sm" variant="outline" onClick={() => toast({
+          title: "AI Learning System",
+          description: "Machine learning feedback system will be added. This will improve AI accuracy through false positive reporting and pattern validation.",
+          duration: 4000,
+        })}>
           {anomaly.severity === 'Critical' ? 'False Positive' : 
            anomaly.severity === 'High' ? 'Dismiss' : 'Review Later'}
         </Button>
@@ -75,6 +93,7 @@ const AnomalyLogItem = ({ anomaly }: any) => (
 );
 
 export default function AIAnalytics() {
+  const { toast } = useToast();
   const anomalies = [
     {
       title: "Suspicious Movement Pattern Detected",
@@ -110,7 +129,11 @@ export default function AIAnalytics() {
           <h1 className="text-2xl font-bold">AI Behavior Analytics</h1>
           <p className="text-muted-foreground">Advanced AI-powered behavior analysis and anomaly detection system</p>
         </div>
-        <Button variant="outline">
+        <Button variant="outline" onClick={() => toast({
+          title: "AI Configuration Panel",
+          description: "Advanced AI settings interface will be implemented. This will allow fine-tuning detection algorithms, confidence thresholds, and alert parameters.",
+          duration: 4000,
+        })}>
           <Settings className="h-4 w-4 mr-2" />
           AI Settings
         </Button>

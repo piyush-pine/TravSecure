@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useToast } from "@/hooks/use-toast";
 import { MapPin, AlertTriangle, TrendingUp, RefreshCw } from "lucide-react";
 
 const RiskZoneCard = ({ zone }: any) => (

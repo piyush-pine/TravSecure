@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import {
   Radio,
   Clock,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 
 export default function IncidentResponse() {
+  const { toast } = useToast();
   return (
     <div className="p-6 space-y-6">
       {/* Page Header */}
