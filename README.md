@@ -33,8 +33,8 @@ TravSecure Dashboard is a sophisticated, real-time monitoring and control center
 
 1. Clone the repository:
    ```
-   git clone https://github.com/piyush-pine/idea-link-dream.git
-   cd idea-link-dream
+   https://github.com/piyush-pine/TravSecure.git
+   cd TravSecure
    ```
 
 2. Install dependencies:
